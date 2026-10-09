@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import type { CourseCardData } from "@/lib/catalog";
 import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -121,8 +122,6 @@ function Catalogue() {
   );
 }
 
-import { useState } from "react";
-import type { CourseCardData } from "@/lib/catalog";
 
 function Paged({ list }: { list: CourseCardData[] }) {
   const [count, setCount] = useState(PAGE);
