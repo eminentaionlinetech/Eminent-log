@@ -28,6 +28,7 @@ import { Route as AuthenticatedAdminInstructorsRouteImport } from './routes/_aut
 import { Route as AuthenticatedAdminMediaRouteImport } from './routes/_authenticated/admin.media'
 import { Route as AuthenticatedAdminPaymentsRouteImport } from './routes/_authenticated/admin.payments'
 import { Route as AuthenticatedAdminStudentsRouteImport } from './routes/_authenticated/admin.students'
+import { Route as ApiPublicKorapayWebhookRouteImport } from './routes/api/public/korapay-webhook'
 import { Route as AuthenticatedAdminCoursesIndexRouteImport } from './routes/_authenticated/admin.courses.index'
 import { Route as AuthenticatedAdminCoursesIdRouteImport } from './routes/_authenticated/admin.courses.$id'
 
@@ -130,6 +131,11 @@ const AuthenticatedAdminStudentsRoute =
     path: '/students',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const ApiPublicKorapayWebhookRoute = ApiPublicKorapayWebhookRouteImport.update({
+  id: '/api/public/korapay-webhook',
+  path: '/api/public/korapay-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminCoursesIndexRoute =
   AuthenticatedAdminCoursesIndexRouteImport.update({
     id: '/courses/',
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/admin/media': typeof AuthenticatedAdminMediaRoute
   '/admin/payments': typeof AuthenticatedAdminPaymentsRoute
   '/admin/students': typeof AuthenticatedAdminStudentsRoute
+  '/api/public/korapay-webhook': typeof ApiPublicKorapayWebhookRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/admin/courses/$id': typeof AuthenticatedAdminCoursesIdRoute
   '/admin/courses/': typeof AuthenticatedAdminCoursesIndexRoute
@@ -182,6 +189,7 @@ export interface FileRoutesByTo {
   '/admin/media': typeof AuthenticatedAdminMediaRoute
   '/admin/payments': typeof AuthenticatedAdminPaymentsRoute
   '/admin/students': typeof AuthenticatedAdminStudentsRoute
+  '/api/public/korapay-webhook': typeof ApiPublicKorapayWebhookRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/admin/courses/$id': typeof AuthenticatedAdminCoursesIdRoute
   '/admin/courses': typeof AuthenticatedAdminCoursesIndexRoute
@@ -206,6 +214,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/media': typeof AuthenticatedAdminMediaRoute
   '/_authenticated/admin/payments': typeof AuthenticatedAdminPaymentsRoute
   '/_authenticated/admin/students': typeof AuthenticatedAdminStudentsRoute
+  '/api/public/korapay-webhook': typeof ApiPublicKorapayWebhookRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/admin/courses/$id': typeof AuthenticatedAdminCoursesIdRoute
   '/_authenticated/admin/courses/': typeof AuthenticatedAdminCoursesIndexRoute
@@ -230,6 +239,7 @@ export interface FileRouteTypes {
     | '/admin/media'
     | '/admin/payments'
     | '/admin/students'
+    | '/api/public/korapay-webhook'
     | '/admin/'
     | '/admin/courses/$id'
     | '/admin/courses/'
@@ -251,6 +261,7 @@ export interface FileRouteTypes {
     | '/admin/media'
     | '/admin/payments'
     | '/admin/students'
+    | '/api/public/korapay-webhook'
     | '/admin'
     | '/admin/courses/$id'
     | '/admin/courses'
@@ -274,6 +285,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/media'
     | '/_authenticated/admin/payments'
     | '/_authenticated/admin/students'
+    | '/api/public/korapay-webhook'
     | '/_authenticated/admin/'
     | '/_authenticated/admin/courses/$id'
     | '/_authenticated/admin/courses/'
@@ -290,6 +302,7 @@ export interface RootRouteChildren {
   ResetPasswordRoute: typeof ResetPasswordRoute
   CoursesSlugRoute: typeof CoursesSlugRoute
   CoursesIndexRoute: typeof CoursesIndexRoute
+  ApiPublicKorapayWebhookRoute: typeof ApiPublicKorapayWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -427,6 +440,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminStudentsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/api/public/korapay-webhook': {
+      id: '/api/public/korapay-webhook'
+      path: '/api/public/korapay-webhook'
+      fullPath: '/api/public/korapay-webhook'
+      preLoaderRoute: typeof ApiPublicKorapayWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin/courses/': {
       id: '/_authenticated/admin/courses/'
       path: '/courses'
@@ -495,6 +515,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResetPasswordRoute: ResetPasswordRoute,
   CoursesSlugRoute: CoursesSlugRoute,
   CoursesIndexRoute: CoursesIndexRoute,
+  ApiPublicKorapayWebhookRoute: ApiPublicKorapayWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
