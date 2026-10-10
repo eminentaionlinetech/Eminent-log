@@ -102,6 +102,7 @@ function Dashboard() {
                           <p className="mt-2 text-sm text-muted-foreground">Not started yet</p>
                         )}
                       </div>
+                      <Button asChild size="sm" className="shrink-0"><Link to="/learn/$slug" params={{ slug: e.course.slug }}>{e.completed_at ? "Review" : e.done > 0 ? "Continue" : "Start"}</Link></Button>
                     </li>
                   ) : null,
                 )}
