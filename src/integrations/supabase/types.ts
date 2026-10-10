@@ -577,6 +577,10 @@ export type Database = {
           resource_count: number
         }[]
       }
+      grant_premium_payment: {
+        Args: { _amount_kobo: number; _raw: Json; _reference: string }
+        Returns: boolean
+      }
       has_active_premium: { Args: { _user_id: string }; Returns: boolean }
       has_role: {
         Args: {
@@ -586,6 +590,10 @@ export type Database = {
         Returns: boolean
       }
       my_account_status: { Args: never; Returns: string }
+      record_lesson_progress: {
+        Args: { _completed: boolean; _lesson_id: string; _position: number }
+        Returns: Json
+      }
     }
     Enums: {
       access_type: "free" | "premium"
