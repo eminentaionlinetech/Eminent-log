@@ -166,7 +166,7 @@ function CourseDetail() {
   );
 }
 
-type ModuleT = Awaited<ReturnType<typeof getPublishedCourse>>["curriculum"][number];
+type ModuleT = Extract<Awaited<ReturnType<typeof getPublishedCourse>>, { curriculum: unknown }>["curriculum"][number];
 
 function ModuleBlock({ module, index, premium }: { module: ModuleT; index: number; premium: boolean }) {
   const [open, setOpen] = useState(index === 0);
