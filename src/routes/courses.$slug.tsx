@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -96,7 +96,7 @@ function CourseDetail() {
                 </div>
               )}
               <div className="p-6">
-                <EnrolPanel courseId={course.id} accessType={course.access_type} hasLessons={lessonCount > 0} />
+                <EnrolPanel courseId={course.id} slug={course.slug} accessType={course.access_type} hasLessons={lessonCount > 0} />
               </div>
             </div>
           </div>
@@ -206,10 +206,11 @@ function ModuleBlock({ module, index, premium }: { module: ModuleT; index: numbe
   );
 }
 
-function EnrolPanel({ courseId, accessType, hasLessons }: { courseId: string; accessType: "free" | "premium"; hasLessons: boolean }) {
+function EnrolPanel({ courseId, slug, accessType, hasLessons }: { courseId: string; slug: string; accessType: "free" | "premium"; hasLessons: boolean }) {
   const { user, loading } = useAuth();
   const qc = useQueryClient();
   const [busy, setBusy] = useState(false);
+  const navigate = useNavigate();
   const state = useQuery({
     queryKey: ["enrolment-state", courseId, user?.id],
     enabled: !!user,
@@ -232,6 +233,7 @@ function EnrolPanel({ courseId, accessType, hasLessons }: { courseId: string; ac
       return;
     }
     toast.success("You're enrolled!");
+    navigate({ to: "/learn/$slug", params: { slug } });
     qc.invalidateQueries({ queryKey: ["enrolment-state", courseId] });
     qc.invalidateQueries({ queryKey: ["my-enrolments"] });
   }
@@ -255,7 +257,7 @@ function EnrolPanel({ courseId, accessType, hasLessons }: { courseId: string; ac
         <p className="flex items-center gap-2 font-semibold text-success"><CheckCircle2 className="h-5 w-5" aria-hidden />
           {state.data.enrolment.completed_at ? "Course completed" : "You're enrolled"}
         </p>
-        <Button asChild variant="outline" className="mt-4 h-11 w-full"><Link to="/dashboard">Go to my courses</Link></Button>
+        <Button asChild className="mt-4 h-11 w-full"><Link to="/learn/$slug" params={{ slug }}>{state.data.enrolment.completed_at ? "Review course" : "Continue learning"}</Link></Button>
       </>
     );
   }
