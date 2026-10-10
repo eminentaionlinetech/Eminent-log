@@ -36,8 +36,8 @@ function Cats() {
     if (error) toast.error(error.message); else refresh();
   }
   async function move(i: number, j: number) {
-    await supabase.from("categories").update({ position: j + 1 }).eq("id", list[i].id);
-    await supabase.from("categories").update({ position: i + 1 }).eq("id", list[j].id);
+    await supabase.from("categories").update({ position: j + 1 }).eq("id", list[i]!.id);
+    await supabase.from("categories").update({ position: i + 1 }).eq("id", list[j]!.id);
     refresh();
   }
 

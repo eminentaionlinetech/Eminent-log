@@ -284,8 +284,8 @@ function Curriculum({ data, refresh }: { data: Data; refresh: () => void }) {
               <div className="flex flex-wrap items-center justify-between gap-2 border-b bg-muted/50 p-3">
                 <p className="min-w-0 font-medium"><span className="text-xs font-semibold text-primary">MODULE {String(i + 1).padStart(2, "0")}</span><br />{m.title}</p>
                 <div className="flex gap-1">
-                  <IconBtn label="Move up" disabled={i === 0} onClick={async () => { await swap("modules", m, modules[i - 1], i, i - 1); refresh(); }}><ArrowUp /></IconBtn>
-                  <IconBtn label="Move down" disabled={i === modules.length - 1} onClick={async () => { await swap("modules", m, modules[i + 1], i, i + 1); refresh(); }}><ArrowDown /></IconBtn>
+                  <IconBtn label="Move up" disabled={i === 0} onClick={async () => { await swap("modules", m, modules[i - 1]!, i, i - 1); refresh(); }}><ArrowUp /></IconBtn>
+                  <IconBtn label="Move down" disabled={i === modules.length - 1} onClick={async () => { await swap("modules", m, modules[i + 1]!, i, i + 1); refresh(); }}><ArrowDown /></IconBtn>
                   <IconBtn label="Rename module" onClick={() => renameModule(m.id, m.title)}><Pencil /></IconBtn>
                   <IconBtn label="Delete module" onClick={() => deleteModule(m.id, m.title)}><Trash2 /></IconBtn>
                 </div>
@@ -301,8 +301,8 @@ function Curriculum({ data, refresh }: { data: Data; refresh: () => void }) {
                     </div>
                     <div className="flex items-center gap-1">
                       <label className="mr-2 flex items-center gap-2 text-xs"><Switch checked={l.is_published} onCheckedChange={(v) => togglePublish(l.id, v)} aria-label="Published" /> Live</label>
-                      <IconBtn label="Move up" disabled={j === 0} onClick={async () => { await swap("lessons", l, ml[j - 1], j, j - 1); refresh(); }}><ArrowUp /></IconBtn>
-                      <IconBtn label="Move down" disabled={j === ml.length - 1} onClick={async () => { await swap("lessons", l, ml[j + 1], j, j + 1); refresh(); }}><ArrowDown /></IconBtn>
+                      <IconBtn label="Move up" disabled={j === 0} onClick={async () => { await swap("lessons", l, ml[j - 1]!, j, j - 1); refresh(); }}><ArrowUp /></IconBtn>
+                      <IconBtn label="Move down" disabled={j === ml.length - 1} onClick={async () => { await swap("lessons", l, ml[j + 1]!, j, j + 1); refresh(); }}><ArrowDown /></IconBtn>
                       <IconBtn label="Edit lesson" onClick={() => setEditing(l.id)}><Pencil /></IconBtn>
                       <IconBtn label="Delete lesson" onClick={() => deleteLesson(l.id, l.title)}><Trash2 /></IconBtn>
                     </div>

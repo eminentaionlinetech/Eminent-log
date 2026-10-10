@@ -12,8 +12,8 @@ import { useAuth } from "@/lib/auth";
 type Mode = "login" | "register" | "forgot";
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (s: Record<string, unknown>): { mode?: Mode } => ({
-    mode: s.mode === "register" || s.mode === "forgot" ? s.mode : undefined,
+  validateSearch: (s: Record<string, unknown>): { mode?: Mode | undefined } => ({
+    mode: s["mode"] === "register" || s["mode"] === "forgot" ? s["mode"] : undefined,
   }),
   head: () => ({
     meta: [
@@ -49,7 +49,7 @@ function AuthPage() {
     setNotice(null);
     const fd = new FormData(e.currentTarget);
     const email = emailSchema.safeParse(fd.get("email"));
-    if (!email.success) return setError(email.error.issues[0].message);
+    if (!email.success) return setError(email.error.issues[0]?.message ?? "Invalid input");
     setBusy(true);
     try {
       if (mode === "forgot") {
@@ -59,10 +59,10 @@ function AuthPage() {
         return;
       }
       const pw = pwSchema.safeParse(fd.get("password"));
-      if (!pw.success) return setError(pw.error.issues[0].message);
+      if (!pw.success) return setError(pw.error.issues[0]?.message ?? "Invalid input");
       if (mode === "register") {
         const name = z.string().trim().min(1, "Enter your name").max(100).safeParse(fd.get("full_name"));
-        if (!name.success) return setError(name.error.issues[0].message);
+        if (!name.success) return setError(name.error.issues[0]?.message ?? "Invalid input");
         const { data, error } = await supabase.auth.signUp({
           email: email.data,
           password: pw.data,
