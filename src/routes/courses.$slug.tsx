@@ -96,7 +96,7 @@ function CourseDetail() {
                 </div>
               )}
               <div className="p-6">
-                <EnrolPanel courseId={course.id} accessType={course.access_type} hasLessons={lessonCount > 0} />
+                <EnrolPanel courseId={course.id} slug={course.slug} accessType={course.access_type} hasLessons={lessonCount > 0} />
               </div>
             </div>
           </div>
