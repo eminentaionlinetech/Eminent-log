@@ -9,14 +9,14 @@ import { CourseCard } from "@/components/site/CourseCard";
 import { CardGridSkeleton, EmptyState, ErrorState } from "@/components/site/States";
 import { categoriesQuery, publishedCoursesQuery } from "@/lib/catalog";
 
-type Search = { q?: string; category?: string; access?: "free" | "premium"; sort?: "newest" | "title" };
+type Search = { q?: string | undefined; category?: string | undefined; access?: "free" | "premium" | undefined; sort?: "newest" | "title" | undefined };
 
 export const Route = createFileRoute("/courses/")({
   validateSearch: (s: Record<string, unknown>): Search => ({
-    q: typeof s.q === "string" && s.q ? s.q : undefined,
-    category: typeof s.category === "string" && s.category ? s.category : undefined,
-    access: s.access === "free" || s.access === "premium" ? s.access : undefined,
-    sort: s.sort === "title" ? "title" : undefined,
+    q: typeof s["q"] === "string" && s["q"] ? s["q"] : undefined,
+    category: typeof s["category"] === "string" && s["category"] ? s["category"] : undefined,
+    access: s["access"] === "free" || s["access"] === "premium" ? s["access"] : undefined,
+    sort: s["sort"] === "title" ? "title" : undefined,
   }),
   head: () => ({
     meta: [
