@@ -166,7 +166,7 @@ function CourseDetail() {
   );
 }
 
-type ModuleT = ReturnType<typeof Route.useLoaderData>["curriculum"][number];
+type ModuleT = Awaited<ReturnType<typeof getPublishedCourse>>["curriculum"][number];
 
 function ModuleBlock({ module, index, premium }: { module: ModuleT; index: number; premium: boolean }) {
   const [open, setOpen] = useState(index === 0);
