@@ -4,7 +4,8 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/_authenticated/admin/students")({ component: Students });
+export const Route = createFileRoute("/_authenticated/admin/students")({
+  head: () => ({ meta: [{ title: "Manage students — EMINENT LOG" }, { name: "description", content: "Manage students for EMINENT LOG administrators." }, { property: "og:title", content: "Manage students — EMINENT LOG" }, { property: "og:description", content: "Manage students for EMINENT LOG administrators." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }), component: Students });
 
 function Students() {
   const qc = useQueryClient();

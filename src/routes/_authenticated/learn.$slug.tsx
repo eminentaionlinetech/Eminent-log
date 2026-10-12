@@ -14,7 +14,8 @@ export const Route = createFileRoute("/_authenticated/learn/$slug")({
   validateSearch: (s: Record<string, unknown>): { lesson?: string | undefined } => ({
     lesson: typeof s["lesson"] === "string" ? s["lesson"] : undefined,
   }),
-  head: () => ({ meta: [{ title: "Learning — EMINENT LOG" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [
+      { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },{ title: "Learning — EMINENT LOG" }, { name: "description", content: "Your private learning session on EMINENT LOG." }, { property: "og:title", content: "Learning — EMINENT LOG" }, { property: "og:description", content: "Your private learning session on EMINENT LOG." }, { name: "robots", content: "noindex" }] }),
   component: Learn,
 });
 

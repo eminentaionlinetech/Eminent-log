@@ -10,7 +10,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { MediaPicker } from "@/components/admin/MediaPicker";
 
-export const Route = createFileRoute("/_authenticated/admin/instructors")({ component: Instructors });
+export const Route = createFileRoute("/_authenticated/admin/instructors")({
+  head: () => ({ meta: [{ title: "Manage instructors — EMINENT LOG" }, { name: "description", content: "Manage instructors for EMINENT LOG administrators." }, { property: "og:title", content: "Manage instructors — EMINENT LOG" }, { property: "og:description", content: "Manage instructors for EMINENT LOG administrators." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }), component: Instructors });
 
 function Instructors() {
   const qc = useQueryClient();
