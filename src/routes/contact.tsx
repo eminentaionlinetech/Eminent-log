@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
       { title: "Contact EMINENT LOG" },
       { name: "description", content: "Get in touch with the EMINENT LOG team about courses, Premium and your account." },
       { property: "og:title", content: "Contact EMINENT LOG" },

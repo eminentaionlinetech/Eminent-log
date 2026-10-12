@@ -6,7 +6,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { slugify } from "@/lib/catalog";
 
-export const Route = createFileRoute("/_authenticated/admin/categories")({ component: Cats });
+export const Route = createFileRoute("/_authenticated/admin/categories")({
+  head: () => ({ meta: [{ title: "Manage categories — EMINENT LOG" }, { name: "description", content: "Manage categories for EMINENT LOG administrators." }, { property: "og:title", content: "Manage categories — EMINENT LOG" }, { property: "og:description", content: "Manage categories for EMINENT LOG administrators." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }), component: Cats });
 
 function Cats() {
   const qc = useQueryClient();

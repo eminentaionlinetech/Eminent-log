@@ -20,6 +20,7 @@ export const Route = createFileRoute("/courses/")({
   }),
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
       { title: "Explore Courses — EMINENT LOG" },
       { name: "description", content: "Search and filter EMINENT LOG courses by category, instructor and free or premium access." },
       { property: "og:title", content: "Explore Courses — EMINENT LOG" },

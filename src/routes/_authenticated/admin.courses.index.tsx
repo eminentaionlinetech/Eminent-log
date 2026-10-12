@@ -13,6 +13,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { slugify } from "@/lib/catalog";
 
 export const Route = createFileRoute("/_authenticated/admin/courses/")({
+  head: () => ({ meta: [{ title: "Manage courses — EMINENT LOG" }, { name: "description", content: "Manage courses for EMINENT LOG administrators." }, { property: "og:title", content: "Manage courses — EMINENT LOG" }, { property: "og:description", content: "Manage courses for EMINENT LOG administrators." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
   component: AdminCourses,
 });
 

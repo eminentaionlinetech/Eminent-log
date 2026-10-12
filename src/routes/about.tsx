@@ -7,6 +7,7 @@ import { siteContentQuery } from "@/lib/settings";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
       { title: "About EMINENT LOG — Learn. Create. Teach. Grow." },
       { name: "description", content: "EMINENT LOG is a learning platform for practical digital skills, built for learners who want to grow personally and professionally." },
       { property: "og:title", content: "About EMINENT LOG" },

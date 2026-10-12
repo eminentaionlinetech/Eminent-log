@@ -17,7 +17,8 @@ export const Route = createFileRoute("/courses/$slug")({
     return res;
   },
   head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Course not found — EMINENT LOG" }, { name: "robots", content: "noindex" }] };
+    if (!loaderData) return { meta: [
+      { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },{ title: "Course not found — EMINENT LOG" }, { name: "robots", content: "noindex" }] };
     const c = loaderData.course;
     const desc = c.short_description || `Learn ${c.title} on EMINENT LOG.`;
     const meta = [

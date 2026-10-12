@@ -9,7 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-export const Route = createFileRoute("/_authenticated/admin/content")({ component: Content });
+export const Route = createFileRoute("/_authenticated/admin/content")({
+  head: () => ({ meta: [{ title: "Manage site content — EMINENT LOG" }, { name: "description", content: "Manage site content for EMINENT LOG administrators." }, { property: "og:title", content: "Manage site content — EMINENT LOG" }, { property: "og:description", content: "Manage site content for EMINENT LOG administrators." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }), component: Content });
 
 const FIELDS: { k: keyof SiteContent; l: string; area?: boolean }[] = [
   { k: "about_title", l: "About page heading" },

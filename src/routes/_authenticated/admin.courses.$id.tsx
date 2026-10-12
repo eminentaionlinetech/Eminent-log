@@ -16,6 +16,7 @@ import { MediaIcon, MediaPicker } from "@/components/admin/MediaPicker";
 import { slugify, formatDuration } from "@/lib/catalog";
 
 export const Route = createFileRoute("/_authenticated/admin/courses/$id")({
+  head: () => ({ meta: [{ title: "Edit course — EMINENT LOG" }, { name: "description", content: "Edit course for EMINENT LOG administrators." }, { property: "og:title", content: "Edit course — EMINENT LOG" }, { property: "og:description", content: "Edit course for EMINENT LOG administrators." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }),
   component: CourseEditor,
 });
 

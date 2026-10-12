@@ -11,6 +11,7 @@ import { useAuth } from "@/lib/auth";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
       { title: "EMINENT LOG — Learn New Skills. Unlock New Possibilities." },
       { name: "description", content: "Practical digital skills taught through engaging video lessons. Website design, graphic design, online business and more." },
       { property: "og:title", content: "EMINENT LOG — Learn. Create. Teach. Grow." },
