@@ -15,6 +15,7 @@ import { AccessBadge } from "@/components/site/CourseCard";
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
       { title: "My Dashboard — EMINENT LOG" },
       { name: "description", content: "Your courses, progress and account on EMINENT LOG." },
       { property: "og:title", content: "My Dashboard — EMINENT LOG" },

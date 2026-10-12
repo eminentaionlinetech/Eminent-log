@@ -6,7 +6,8 @@ export const Route = createFileRoute("/_authenticated/admin")({
     const { data } = await supabase.rpc("has_role", { _user_id: context.user.id, _role: "admin" });
     if (!data) throw redirect({ to: "/dashboard" });
   },
-  head: () => ({ meta: [{ title: "Admin — EMINENT LOG" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [
+      { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },{ title: "Admin — EMINENT LOG" }, { name: "description", content: "Secure administration for EMINENT LOG." }, { property: "og:title", content: "Admin — EMINENT LOG" }, { property: "og:description", content: "Secure administration for EMINENT LOG." }, { name: "robots", content: "noindex" }] }),
   component: AdminLayout,
 });
 

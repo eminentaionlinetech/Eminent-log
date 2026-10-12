@@ -10,7 +10,8 @@ import { MediaIcon } from "@/components/admin/MediaPicker";
 import { ACCEPT, deleteMedia, replaceMediaFile, signedUrl, uploadMedia, type MediaRow } from "@/lib/media";
 import { formatBytes, formatDuration } from "@/lib/catalog";
 
-export const Route = createFileRoute("/_authenticated/admin/media")({ component: Media });
+export const Route = createFileRoute("/_authenticated/admin/media")({
+  head: () => ({ meta: [{ title: "Media library — EMINENT LOG" }, { name: "description", content: "Media library for EMINENT LOG administrators." }, { property: "og:title", content: "Media library — EMINENT LOG" }, { property: "og:description", content: "Media library for EMINENT LOG administrators." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }), component: Media });
 
 function Media() {
   const qc = useQueryClient();

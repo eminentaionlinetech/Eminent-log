@@ -7,6 +7,7 @@ import { CardGridSkeleton, EmptyState, ErrorState } from "@/components/site/Stat
 export const Route = createFileRoute("/categories")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
       { title: "Course Categories — EMINENT LOG" },
       { name: "description", content: "Browse EMINENT LOG learning categories: website design, graphic design, online business and digital skills." },
       { property: "og:title", content: "Course Categories — EMINENT LOG" },

@@ -1,5 +1,7 @@
 # EMINENT LOG roadmap
 
+- [x] Display the uploaded logo publicly in the header, footer, and browser icon
+
 - [x] Phase 1: public site, catalogue, auth, admin, media uploads, enrolment
 - [x] Build errors fixed
 - [x] Phase 2: lesson player, resume, saved progress, course completion

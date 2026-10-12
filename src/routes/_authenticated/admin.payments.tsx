@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
-export const Route = createFileRoute("/_authenticated/admin/payments")({ component: Payments });
+export const Route = createFileRoute("/_authenticated/admin/payments")({
+  head: () => ({ meta: [{ title: "Payments and subscriptions — EMINENT LOG" }, { name: "description", content: "Payments and subscriptions for EMINENT LOG administrators." }, { property: "og:title", content: "Payments and subscriptions — EMINENT LOG" }, { property: "og:description", content: "Payments and subscriptions for EMINENT LOG administrators." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }] }), component: Payments });
 
 function Payments() {
   const q = useQuery({
